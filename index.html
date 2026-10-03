@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>HabitFlow — Habit Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PERSONAL PRODUCTIVITY</p>
+        <h1>Habit<span>Flow</span></h1>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="todayBtn" title="Go to today">Today</button>
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-grid">
+        <div class="hero-card">
+          <div>
+            <p class="muted">MONTHLY OVERVIEW</p>
+            <h2 id="monthTitle">October 2026</h2>
+            <p class="hero-sub" id="monthSub">Build consistency one day at a time.</p>
+          </div>
+          <button class="primary-btn" id="addHabitBtn">＋ Add Habit</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>🔥</span>
+            <div><strong id="currentStreak">0</strong><small>Current streak</small></div>
+          </div>
+          <div class="stat-card">
+            <span>🏆</span>
+            <div><strong id="bestStreak">0</strong><small>Best streak</small></div>
+          </div>
+          <div class="stat-card">
+            <span>✓</span>
+            <div><strong id="completionRate">0%</strong><small>Completion</small></div>
+          </div>
+          <div class="stat-card">
+            <span>🎯</span>
+            <div><strong id="goalCount">0%</strong><small>Goal progress</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="progress-card">
+        <div class="section-heading">
+          <div>
+            <p class="muted">MONTHLY GOAL</p>
+            <h3>Overall progress</h3>
+          </div>
+          <strong id="overallProgressText">0 / 0</strong>
+        </div>
+        <div class="progress-track large"><div id="overallProgressBar" class="progress-fill"></div></div>
+      </section>
+
+      <section class="tracker-card">
+        <div class="tracker-toolbar">
+          <div>
+            <p class="muted">DAILY TRACKER</p>
+            <h3 id="trackerHeading">October 2026</h3>
+          </div>
+          <div class="month-nav">
+            <button class="nav-btn" id="prevMonth">‹</button>
+            <button class="nav-btn" id="nextMonth">›</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="habitTable">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading standalone">
+          <div>
+            <p class="muted">GOALS</p>
+            <h3>Habit progress</h3>
+          </div>
+        </div>
+        <div id="goalCards" class="goal-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Saved automatically in your browser</span>
+      <button id="resetBtn" class="danger-link">Reset all data</button>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <p class="muted">HABIT</p>
+          <h3 id="modalTitle">Add a habit</h3>
+        </div>
+        <button class="close-btn" id="closeModal">×</button>
+      </div>
+      <form id="habitForm">
+        <input type="hidden" id="habitId">
+        <label>
+          Habit name
+          <input id="habitName" required maxlength="40" placeholder="e.g. Coding" />
+        </label>
+        <label>
+          Icon
+          <input id="habitIcon" maxlength="4" placeholder="💻" />
+        </label>
+        <label>
+          Monthly goal (days)
+          <input id="habitGoal" type="number" min="1" max="31" value="20" required />
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="cancelModal">Cancel</button>
+          <button type="submit" class="primary-btn">Save habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
